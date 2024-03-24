@@ -77,7 +77,7 @@ action:
               entity_id: !input scene_long
           - delay:
               milliseconds: 500
-      # Long-Press
+      # Double-Press-Off
       - conditions:
           - condition: template
             value_template: '{{ trigger.event.data.command == "off" }}'
