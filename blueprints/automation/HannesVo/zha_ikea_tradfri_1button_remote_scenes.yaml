@@ -80,7 +80,7 @@ action:
       # Long-Press
       - conditions:
           - condition: template
-            value_template: '{{ trigger.event.data.command == "button_double_press" }}'
+            value_template: '{{ trigger.event.data.command == "remote_button_double_press" }}'
         sequence:
           - service: scene.turn_on
             target:
