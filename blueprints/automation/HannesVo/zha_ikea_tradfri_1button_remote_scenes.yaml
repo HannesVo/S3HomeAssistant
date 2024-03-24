@@ -37,6 +37,13 @@ blueprint:
         entity:
           filter:
             - domain: scene
+    scene_double:
+      name: Double Press Scene
+      description: Select the scene to be activated with a double click (press).
+      selector:
+        entity:
+          filter:
+            - domain: scene
 
 mode: single
 max_exceeded: silent
@@ -68,6 +75,16 @@ action:
           - service: scene.turn_on
             target:
               entity_id: !input scene_long
+          - delay:
+              milliseconds: 500
+      # Long-Press
+      - conditions:
+          - condition: template
+            value_template: '{{ trigger.event.data.command == "button_double_press" }}'
+        sequence:
+          - service: scene.turn_on
+            target:
+              entity_id: !input scene_double
           - delay:
               milliseconds: 500
 
